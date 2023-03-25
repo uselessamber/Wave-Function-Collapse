@@ -7,6 +7,10 @@ FPS = 60
 MAP_WIDTH = int(input("Input the map's width: "))
 MAP_HEIGHT = int(input("Input the map's height: "))
 TILE_SIZE = int(input("Input the tile's size: "))
+LOOP = False
+is_loop = input("Type L if you want the map to loop horizontally or vertically: ")
+if is_loop.lower() == "l":
+    LOOP = True
 #
 WIDTH = TILE_SIZE * MAP_WIDTH
 HEIGHT = TILE_SIZE * MAP_HEIGHT
@@ -70,6 +74,18 @@ def collapse(x, y):
             tile_list[ny][nx].add_restriction(clamp_add(i, 2, 4), 1)
         else:
             tile_list[ny][nx].add_restriction(clamp_add(i, 2, 4), 0)
+
+if not LOOP:
+    for y in range(MAP_HEIGHT):
+        for x in range(MAP_WIDTH):
+            if y - 1 < 0:
+                tile_list[y][x].add_restriction(0, 0)
+            if x + 1 >= MAP_WIDTH:
+                tile_list[y][x].add_restriction(1, 0)
+            if y + 1 >= MAP_HEIGHT:
+                tile_list[y][x].add_restriction(2, 0)
+            if x - 1 < 0:
+                tile_list[y][x].add_restriction(3, 0)
 
 running = True
 collapse_timer = 0

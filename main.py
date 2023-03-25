@@ -3,10 +3,10 @@ import random
 from library.tile import tile
 
 FPS = 60
-#Modify width and height and tile size here
-MAP_WIDTH = 15
-MAP_HEIGHT = 15
-TILE_SIZE = 50
+#
+MAP_WIDTH = int(input("Input the map's width: "))
+MAP_HEIGHT = int(input("Input the map's height: "))
+TILE_SIZE = int(input("Input the tile's size: "))
 #
 WIDTH = TILE_SIZE * MAP_WIDTH
 HEIGHT = TILE_SIZE * MAP_HEIGHT

@@ -7,7 +7,8 @@ class tile:
     #0010 - right (x + 1)
     #0100 - down (y + 1)
     #1000 - left (x - 1)
-    def __init__(self, tile = 0, size = 10):
+    def __init__(self, tile = 0, size = 10, skin = "connector"):
+        self.skin = skin
         self.tile = tile
         self.tile_size = size
         self.restriction_rule = 0 #the value of the restricted bits
@@ -33,7 +34,7 @@ class tile:
             self.update_image()
     
     def update_image(self):
-        self.image = pygame.image.load(f"tiles/{self.tile & 15}.png")
+        self.image = pygame.image.load(f"tiles/{self.skin}/{self.tile & 15}.png")
         self.image = pygame.transform.scale(self.image, (self.tile_size, self.tile_size))
         self.rect = self.image.get_rect()
 

@@ -1,5 +1,6 @@
 import pygame
 import random
+import os
 from library.tile import tile
 
 FPS = 60
@@ -11,6 +12,11 @@ LOOP = False
 is_loop = input("Type L if you want the map to loop horizontally or vertically: ")
 if is_loop.lower() == "l":
     LOOP = True
+SKINS = os.listdir("tiles")
+print("Skins: ")
+for idx, skin in enumerate(SKINS):
+    print(f"{idx}: {skin}")
+choice = int(input("Input skin: ")) % len(SKINS)
 #
 WIDTH = TILE_SIZE * MAP_WIDTH
 HEIGHT = TILE_SIZE * MAP_HEIGHT
@@ -37,7 +43,7 @@ def clamp_sub(value, subtractives, modulo):
 for i in range(MAP_HEIGHT):
     tile_list.append([])
     for j in range(MAP_WIDTH):
-        tile_list[i].append(tile(0, TILE_SIZE))
+        tile_list[i].append(tile(0, TILE_SIZE, SKINS[choice]))
 
 def get_random_lowest_entropy():
     lowest = 2**64

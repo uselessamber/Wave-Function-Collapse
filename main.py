@@ -2,13 +2,14 @@ import pygame
 import random
 from library.tile import tile
 
-
-WIDTH = 800
-HEIGHT = 800
 FPS = 60
-MAP_WIDTH = 20
-MAP_HEIGHT = 20
-TILE_SIZE = min({WIDTH // MAP_WIDTH, HEIGHT // MAP_HEIGHT})
+#Modify width and height and tile size here
+MAP_WIDTH = 15
+MAP_HEIGHT = 15
+TILE_SIZE = 50
+#
+WIDTH = TILE_SIZE * MAP_WIDTH
+HEIGHT = TILE_SIZE * MAP_HEIGHT
 
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
